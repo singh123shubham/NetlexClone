@@ -1,37 +1,50 @@
-import React, { useState } from 'react'
-import Header from './Header'
+import React, { useRef, useState } from 'react';
+import Header from './Header';
+import { checkValidata } from '../Utils/Validate';
 
 const Login = () => {
+    const [isSignInForm, setIsSignInFrom] = useState(true);
+    const [errorMessage, setErrorMessage] = useState(null);
 
-    const [isSignForm ,setIsSignFrom] = useState(true)
-
-
+    const name = useRef(null);
+    const email = useRef(null);
+    const password = useRef(null);
 
     const handleToggleSignInForm = () => {
-        setIsSignFrom(!isSignForm)
+        setIsSignInFrom(!isSignInForm);
     }
-  return (
-    <div>
-        <Header/>
-        
-        <div className='absolute w-full'>
-            <img 
-                className='w-full'
-                src="https://c4.wallpaperflare.com/wallpaper/192/803/717/stranger-things-netflix-tv-series-fan-art-wallpaper-preview.jpg"/>
+
+    const handleButtonClick = () => {
+        // validate from data
+        const message = checkValidata(email.current.value, password.current.value,name.current.value);
+        setErrorMessage(message);
+
+        // Sign In /Sign Up
+    }
+
+    return (
+        <div>
+            <Header/>
+            <div className='absolute w-full'>
+                <img 
+                    className='w-full'
+                    src="https://c4.wallpaperflare.com/wallpaper/192/803/717/stranger-things-netflix-tv-series-fan-art-wallpaper-preview.jpg"
+                    alt="Background"
+                />
+            </div>
+
+            <form className=' absolute p-12 bg-black w-4/12 my-40 mx-auto right-0 left-0 rounded-lg bg-opacity-80' onSubmit={(e) => e.preventDefault()}>
+                <h1 className=' font-bold text-3xl text-yellow-50 py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+                {!isSignInForm && (<input ref={name} type='text' placeholder='Full Name' className='p-4 my-4 w-full bg-slate-200 rounded-sm' />)}
+                <input ref={email} type='text' placeholder='Email Address' className='p-4 my-4 w-full bg-slate-200 rounded-sm' />
+                <input ref={password} type='password' placeholder='Enter password' className='p-4 my-4 w-full bg-slate-200 rounded-sm'/>
+                {errorMessage && <p className='text-red-500 py-2 font-bold'>{errorMessage}</p>}
+                <button className='p-2 my-6 bg-red-600 w-full text-white font-bold rounded-lg' onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+                <h1 className='text-white'>Forgot Password?</h1>
+                <p className='text-white cursor-pointer' onClick={handleToggleSignInForm}>{isSignInForm ? "New to Netflix? Sign up now." : "Already registered? Sign In Now"}</p>
+            </form>
         </div>
-
-        <form className=' absolute p-12 bg-black w-4/12 my-40 mx-auto right-0 left-0 rounded-lg bg-opacity-80'>
-            <h1 className=' font-bold text-3xl text-yellow-50 py-4'>{isSignForm ? "Sign In" : "Sign Up"}</h1>
-            {!isSignForm &&(<input type='text ' placeholder='Full Name' className='p-4 my-4 w-full bg-slate-200 rounded-sm' />)}
-            <input type='text ' placeholder='Email Address' className='p-4 my-4 w-full bg-slate-200 rounded-sm' />
-            <input type='password ' placeholder='Enter password' className='p-4 my-4 w-full bg-slate-200 rounded-sm'/>
-            <button className='p-2 my-6 bg-red-600 w-full text-white font-bold rounded-lg'>{isSignForm ? "Sign In" : "Sign Up"}</button>
-            <h1 className='text-white'>Forgot Password?</h1>
-            <p className='text-white cursor-pointer' onClick={handleToggleSignInForm}>{isSignForm ? "New to Netflix? Sign up now." : "Allready registered? Sign In Now"}</p>
-
-        </form>
-    </div>
-  )
+    );
 }
 
-export default Login
+export default Login;
