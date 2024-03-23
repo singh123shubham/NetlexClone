@@ -6,8 +6,12 @@
  -- Sign In from
  -- Login from
  -- From Validation
- -- useRef()
-
+ -- useRef() hook
+ -- firebase setup
+ -- deployed our app to production
+ -- create SignUp user Account
+ -- implement SignIn  In user API
+ -- Create a redux  store with useSlice
 
 
  # Features 
