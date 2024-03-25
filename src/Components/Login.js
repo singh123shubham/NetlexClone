@@ -7,10 +7,10 @@ import {useNavigate} from "react-router-dom"
 import userIcon from "../Assets/userIcon.jpg"
 import {useDispatch } from 'react-redux'
 import { addUser } from "../Utils/userSlice";
+import { backGroundImage, profileURL } from "./Constants";
 const Login = () => {
   const [isSignInForm, setIsSignInFrom] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const name = useRef(null);
@@ -41,12 +41,11 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/60727110?v=4"
+            displayName: name.current.value, photoURL: profileURL
           }).then(() => {
             // Profile updated!
             const {uid ,email,displayName,photoURL:photoURL} = auth.currentUser;
             dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL: photoURL}))
-            navigate("/browse")
 
           }).catch((error) => {
             // An error occurred
@@ -69,7 +68,6 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user)
-          navigate("/browse")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -85,7 +83,7 @@ const Login = () => {
       <div className="absolute w-full">
         <img
           className="w-full"
-          src="https://c4.wallpaperflare.com/wallpaper/192/803/717/stranger-things-netflix-tv-series-fan-art-wallpaper-preview.jpg"
+          src={backGroundImage}
           alt="Background"
         />
       </div>

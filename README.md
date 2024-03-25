@@ -12,6 +12,15 @@
  -- create SignUp user Account
  -- implement SignIn  In user API
  -- Create a redux  store with useSlice
+ -- Implement Sign out
+ -- update profile
+ -- Bug fix :sign user and profile picture update
+ -- Bug fix :if the user is not login than redirect /browse page and vice-versa
+ -- UnSubscribe to the onAuthStateChange callback
+ -- Add hardcoded value to constant  file for api key.
+ -- Register TMDB API and create a account to get acces token
+ -- Get data from TMDB movieList API
+ 
 
 
  # Features 
