@@ -20,6 +20,16 @@
  -- Add hardcoded value to constant  file for api key.
  -- Register TMDB API and create a account to get acces token
  -- Get data from TMDB movieList API
+ -- Get moiveinfo components create and also create customHook
+ -- Get movieCast components create and also create customHook
+ -- Get moveVedio components create and also create customHook
+ -- Search implementation and custonHook
+ -- Make a full responsive mobile tab laptop
+ -- language change implemention
+ -- add footer  component also add my portfolio  link
+ -- 
+
+
  
 
 

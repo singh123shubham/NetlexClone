@@ -11,4 +11,19 @@ export const API_OPTIONS = {
     }
   };
 
+  export const BANNER_IMG =
+  "https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/e4b3c14a-684b-4fc4-b14f-2b486a4e9f4e/IN-en-20240219-popsignuptwoweeks-perspective_alpha_website_large.jpg";
+
 export const IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w500/"
+
+export const BANNER_IMG_CDN_URL = "https://image.tmdb.org/t/p/original";
+
+export const SUPPORTED_LANGUAGE = [ 
+  {identfire : "en" , name : "English"},
+  {identfire : "hindi" , name : "Hindi"},
+  {identfire : "spanish" , name : "Spanish"},
+  {identfire : "tamil" , name : "Tamil"},
+]
+
+
+export const OPEN_API_KEY = process.env.REACT_OPEN_API_KET

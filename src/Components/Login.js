@@ -1,17 +1,20 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidata } from "../Utils/Validate";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../Utils/Firebase";
-import {useNavigate} from "react-router-dom"
-import userIcon from "../Assets/userIcon.jpg"
-import {useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/userSlice";
-import { backGroundImage, profileURL } from "./Constants";
+import { BANNER_IMG, profileURL } from "./Constants";
+
 const Login = () => {
   const [isSignInForm, setIsSignInFrom] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -25,8 +28,8 @@ const Login = () => {
     // validate from data
     const message = checkValidata(
       email.current.value,
-      password.current.value,
-     //name.current.value
+      password.current.value
+      //name.current.value
     );
     setErrorMessage(message);
 
@@ -41,16 +44,31 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: name.current.value, photoURL: profileURL
-          }).then(() => {
-            // Profile updated!
-            const {uid ,email,displayName,photoURL:photoURL} = auth.currentUser;
-            dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL: photoURL}))
+            displayName: name.current.value,
+            photoURL: profileURL,
+          })
+            .then(() => {
+              // Profile updated!
+              const {
+                uid,
+                email,
+                displayName,
+                photoURL: photoURL,
+              } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
 
-          }).catch((error) => {
-            // An error occurred
-            setErrorMessage(error.message)
-          });
+              setErrorMessage(error.message);
+            });
           console.log(user);
         })
         .catch((error) => {
@@ -63,11 +81,11 @@ const Login = () => {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
-        password.current.value,
-        )
+        password.current.value
+      )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user)
+          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -82,14 +100,14 @@ const Login = () => {
       <Header />
       <div className="absolute w-full">
         <img
-          className="w-full"
-          src={backGroundImage}
-          alt="Background"
+          className="relative w-full h-[170vh] sm:h-[180vh] md:h-[165vh] -z-10 object-cover md:object-fill"
+          src={BANNER_IMG}
+          alt="banner"
         />
       </div>
 
       <form
-        className=" absolute p-12 bg-black w-4/12 my-40 mx-auto right-0 left-0 rounded-lg bg-opacity-80"
+        className=" absolute p-6 md:p-12 bg-black w-72  md:w-5/12 my-20 md:my-40 mx-auto right-0 left-0 rounded-lg bg-opacity-80 "
         onSubmit={(e) => e.preventDefault()}
       >
         <h1 className=" font-bold text-3xl text-yellow-50 py-4">
@@ -97,7 +115,7 @@ const Login = () => {
         </h1>
         {!isSignInForm && (
           <input
-             ref={name}
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-slate-200 rounded-sm"

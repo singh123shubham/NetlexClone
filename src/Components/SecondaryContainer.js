@@ -19,7 +19,3 @@ const SecondaryContainer = () => {
 
 export default SecondaryContainer
 
-
-// movielist - papoular
-// movielist - tranding
-// movielist - hrror
