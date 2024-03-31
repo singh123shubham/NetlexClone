@@ -20,16 +20,21 @@
  -- Add hardcoded value to constant  file for api key.
  -- Register TMDB API and create a account to get acces token
  -- Get data from TMDB movieList API
- -- Get moiveinfo components create and also create customHook
- -- Get movieCast components create and also create customHook
- -- Get moveVedio components create and also create customHook
- -- Search implementation and custonHook
- -- Make a full responsive mobile tab laptop
- -- language change implemention
- -- add footer  component also add my portfolio  link
- -- 
-
-
+ -- Create a custom Hook (now playing movie)
+ -- create a moviesSlice
+ -- update store with movieData
+ -- planning for MainContainer and secondary container
+ -- fetch data for Trailer (movie)
+ -- update store trailer
+ -- Embedded the youTube vedio and make it autoplay and mute
+ -- Tailwind classes to make main container look awsome
+ -- build secondary container
+ -- build movie list (components)
+ -- build movie card (components)
+ -- TMDB IMAGEURL CDU set
+ -- made the browse page amazing with Tailwind css
+ -- usePapularMovies , useTrandingMovie  , useTopRatedMovie create a custom hook
+ -- GPT search feature
  
 
 

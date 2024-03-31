@@ -14,7 +14,6 @@ const GPTSearch = () => {
       <div className="">
       <MovieSearchBar/>
       <MovieSuggestion/>
-      <Footer/>
       </div>
     </>
   );
