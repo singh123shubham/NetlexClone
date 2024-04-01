@@ -3,6 +3,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import MovieInfo from "./MovieInfo";
 import MoviesByActor from "./MoviesByActor";
+import ErrorPage from "./ErrorPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -22,6 +23,14 @@ const Body = () => {
       path: "/castmovie/:id",
       element: <MoviesByActor />,
     },
+    {
+      path : "/error",
+      element : <ErrorPage/>
+    },
+    {
+      path : "*",
+      element : <ErrorPage/>
+    }
   ]);
 
   return (
